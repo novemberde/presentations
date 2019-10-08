@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Let's start SVELTE!</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
@@ -33,7 +33,7 @@
 						<img src="/res/dg-logo.png" class="img dg-logo" alt="Dangguen">
 					</div>
 					<span>
-						Dangguen Marcket, Byun Kyuhyun
+						Dangguen Market, Byun Kyuhyun
 					</span>
 				</section>
 				<section>
@@ -57,8 +57,345 @@
 						<img src="res/svelte.png" class="img" alt="svelte">
 					</div>
 					<h2>What is svelte?</h2>
+					<p>Cybernetically enhanced web apps</p>
+					<div class="ref">
+						<a href="https://vujson.com/img/svelte.png">https://vujson.com/img/svelte.png</a>
+					</div>
+					<aside class="notes">
+						the science of communications and automatic control systems in both machines and living things.
+						자동으로 컨트롤하는 것이 강화된 웹앱
+						Svelte는 어떠한 것들을 키워드로 가지고 있는지 알아볼게요
+					</aside>
 				</section>
-				<section></section>
+				<section>
+					<img class="svelte-meaning" src="res/svelte-meaning.png" alt="">
+				</section>
+				<section>
+					<ul>
+						<h3>*Write less code</h3>
+						<h3>*No virtual DOM</h3>
+					</ul>
+				</section>
+				<section>
+					<h3>Write less code</h3>
+					<!-- <pre>
+						<code class="hljs" data-line-numbers="4,8-11">
+import React, { useState } from 'react';
+	
+function Example() {
+	const [count, setCount] = useState(0);
+	
+	return (
+	<div>
+		<p>You clicked {count} times</p>
+		<button onClick={() => setCount(count + 1)}>
+		Click me
+		</button>
+	</div>
+	);
+}
+						</code>
+					</pre> -->
+					<pre>
+						<code class="hljs">
+for (let i = 0; i <= 100; i += 1) {
+  if (i % 2 === 0) {
+    console.log(`${i} is even`);
+  }
+}
+						</code>
+					</pre>
+					<pre>
+						<code class="hljs">
+for (let i = 0; i <= 100; i += 1) if (i % 2 === 0) console.log(`${i} is even`);
+						</code>
+					</pre>
+					<aside class="notes">
+						코드를 줄인다는 것은 이런 의미가 아니에요.
+						코드가 여러줄로 되어있는 것을 줄여서 한줄로 표현하는 것이다. 이건 아니에요.
+						하고자하는 말은 우린 생각보다 많은 시간을 코드를 이해하는 데 사용하고 있어요.
+						코드를 설명하기 위한 주석이라던지 아니면 전체 컴포넌트간의 의존관계를 설정하는
+						코드들이라던지 이런것들이 많이 생기면 전채룰 이해하는데 많은 시간이 들어요.
+						---
+						사실 코드베이스의 크기를 가지고 선형이 아닌 사차적으로 성장한다는 것은 널리 인정되고 있다.
+						우리의 직관이 담긴 트랙: 10줄짜리 당기기 요청은 100줄짜리에는 거의 적용되지 않는 정도의 정밀 조사를 받게 될 것이다.
+						그리고 일단 주어진 모듈이 너무 커서 하나의 화면에 맞지 않게 되면,
+						그것을 이해하는 데 필요한 인지적 노력이 현저하게 증가한다.
+						우리는 코멘트를 리액터링하고 추가함으로써 보상한다.
+						거의 항상 더 많은 코드로 이어지는 활동. 악순환이다.
+						하지만 우리가 강박관념에 빠져있는 동안- 바로! — 성능 번호, 번들 크기 및 기타 측정할 수 있는 모든 것을 넘어서서,
+						우리는 우리가 쓰고 있는 코드의 양에 거의 주의를 기울이지 않는다.
+
+						판독성이 중요하다.
+						나는 확실히 우리가 읽기 쉽다고 해서 가능한 한 가장 컴팩트한 형태로 코드를 긁어모아야 한다고 주장하는 것은 아니다.
+						또한 나는 코드 라인을 줄이는 것이 반드시 가치 있는 목표라고 주장하는 것이 아니다.
+						왜냐하면 그것은 이렇게 읽을 수 있는 코드를 바꾸도록 장려하기 때문이다.
+
+						위처럼 줄인다고 능사가 아니다.
+						대신, 나는 우리가 자연스럽게 코드를 덜 쓸 수 있게 하는 언어와 패턴을 선호해야 한다고 주장하고 있다.
+					</aside>
+				</section>
+				<section>
+					<h3>Write less code</h3>
+					<iframe title="Simple component example" src="https://svelte.dev/repl/embed?example=blog-write-less-code" scrolling="no"></iframe>
+					<aside class="notes">
+						간단히 보여지는 Svelte 코드에요
+					</aside>
+				</section>
+				<section>
+					<h3>Write less code - How about React?</h3>
+					<pre>
+						<code class="hljs small">
+import React, { useState } from 'react';
+
+export default () => {
+  const [a, setA] = useState(1);
+  const [b, setB] = useState(2);
+
+  function handleChangeA(event) {
+    setA(+event.target.value);
+  }
+
+  function handleChangeB(event) {
+    setB(+event.target.value);
+  }
+
+  return (
+    <div>
+      <input type="number" value={a} onChange={handleChangeA}/>
+      <input type="number" value={b} onChange={handleChangeB}/>
+
+      <p>{a} + {b} = {a + b}</p>
+    </div>
+  );
+};
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Write less code - How about Vue?</h3>
+					<pre>
+						<code class="hljs small">
+<template>
+  <div>
+    <input type="number" v-model.number="a">
+    <input type="number" v-model.number="b">
+
+    <p>{{a}} + {{b}} = {{a + b}}</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    data: function() {
+      return {
+        a: 1,
+        b: 2
+      };
+    }
+  };
+</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Write less code</h3>
+					<ul>
+						<li>React - 442 Characters</li>
+						<li>Vue - 263 Characters</li>
+						<li><b>Svelte - 145 Charaters</b></li>
+					</ul>				
+					<aside class="notes">
+						즉, 스벨트에서 145자를 차지하는 것을 달성하려면 리액트에서는 442자, 브에에서는 263자가 필요하다. 리액트 버전은 말 그대로 3배 더 크다! 그 차이가 아주 명백하게 나타나는 것은 이례적이다. 내 경험상, 리액트 구성요소가 스벨트의 등가물보다 보통 40% 정도 크다. 아이디어를 보다 간결하게 표현할 수 있는 스벨트의 디자인 특징을 살펴보자.
+					</aside>
+				</section>
+				<section>
+					<h3>Write less code - Top-level elements</h3>
+					<p>
+						In Svelte, a component can have as many top-level elements as you like. 
+						In React and Vue, a component must have a single top-level element — in React's case,
+						trying to return two top-level elements from a component function would result in syntactically invalid code. (You can use a fragment — &lt;&gt; — instead of a &lt;div&gt;, but it's the same basic idea, and still results in an extra level of indentation).
+						
+						In Vue, your markup must be wrapped in a &lt;template&gt; element, which I'd argue is redundant.
+					</p>
+					<aside class="notes">
+						최상위 요소 스벨트에서 구성요소는 원하는 만큼의 최상위 요소를 가질 수 있다.
+						React와 Vue에서 구성 요소는 단일 최상위 요소를 가져야 한다.
+						React의 경우 구성 요소 기능에서 두 개의 최상위 요소를 반환하려고 하면 구문적으로 유효하지 않은 코드가 발생할 수 있다.
+						(div 대신 파편 — (> — 를 사용할 수 있지만, 그것은 같은 기본 사상이고, 여전히 추가적인 침입을 초래한다.)
+						Vue에서, 당신의 마크업은 반드시 template 요소에 싸여있어야 하는데, 나는 그것이 불필요한 것이라고 주장한다.
+					</aside>
+				</section>
+				<section>
+					<h3>Write less code - state</h3>
+					<div>Update local component state in Svelte:</div>
+					<pre>
+						<code class="hljs small">
+let count = 0;
+
+function increment() {
+  count += 1;
+}
+						</code>
+					</pre>
+					<div>Use the useState hook in react:</div>
+					<pre>
+						<code class="hljs small">
+const [count, setCount] = useState(0);
+
+function increment() {
+  setCount(count + 1);
+}
+						</code>
+					</pre>
+					<aside class="notes">
+							This is much noisier — it expresses the exact same concept but with over 60% more characters.
+							As you're reading the code, you have to do that much more work to understand the author's intent.
+							In Vue, meanwhile, we have a default export with a data function that returns an object literal with properties corresponding to our local state.
+							Things like helper functions and child components can't simply be imported and used in the template,
+							but must instead be 'registered' by attaching them to the correct part of the default export.
+
+							이것은 훨씬 더 시끄럽다. 정확히 같은 개념을 표현하지만 60%가 넘는 문자로 표현한다.
+							코드를 읽으면서 저자의 의도를 이해하기 위해서는 그만큼 더 많은 작업을 해야 한다.
+							한편, Vue에서는, 우리의 로컬 상태에 해당하는 속성을 가진 물체를 리터럴로 반환하는 데이터 함수와 함께 기본 내보내기가 있다.
+							도우미 기능이나 아동 구성품과 같은 것들은 단순히 템플릿에서 수입하여 사용할 수 있는 것이 아니라,
+							대신 기본 수출품의 올바른 부분에 부착하여 '등록'해야 한다.
+					</aside>
+				</section>
+				<section>
+					<h3>Write less code - Death to boilerplate</h3>
+These are just some of the ways that Svelte helps you build user interfaces with a minimum of fuss.
+There are plenty of others — for example,  essentially do the work of React's useMemo, useCallback and useEffect without the boilerplate (or indeed the garbage collection overhead of creating inline functions and arrays on each state change).
+
+How? By choosing a different set of constraints. Because , we're not bound to the peculiarities of JavaScript: we can design a component authoring experience, rather than having to fit it around the semantics of the language.
+Paradoxically, this results in more idiomatic code — for example using variables naturally rather than via proxies or hooks — while delivering significantly more performant apps.
+					<aside class="notes">
+					Death to boilerplate
+					These are just some of the ways that Svelte helps you build user interfaces with a minimum of fuss.
+					There are plenty of others — for example,  essentially do the work of React's useMemo, useCallback and useEffect without the boilerplate (or indeed the garbage collection overhead of creating inline functions and arrays on each state change).
+					How? By choosing a different set of constraints.
+					Because , we're not bound to the peculiarities of JavaScript:
+						we can design a component authoring experience,
+						rather than having to fit it around the semantics of the language.
+						Paradoxically, this results in more idiomatic code — for example using variables naturally rather than via proxies or hooks — while delivering significantly more performant apps.
+					보일러용 데스 이것들은 스벨트가 최소한의 소동으로 사용자 인터페이스를 구축하는 데 도움을 주는 방법들 중 일부일 뿐이다. 그 외에도 많은 것들이 있다. 예를 들어, 기본적으로 React의 useMemo, Callback을 사용하고 보일러 플레이트 없이 Effect를 사용한다(또는 각 상태 변경 시 인라인 기능과 어레이를 만드는 쓰레기 수거 오버헤드). 어떻게?
+					다른 종류의 제약조건들을 선택함으로써. 왜냐하면, 우리는 자바스크립트의 특이성에 얽매이지 않기 때문이다.
+					우리는 언어의 의미론에 맞춰야 하는 대신, 경험을 허가하는 요소를 설계할 수 있기 때문이다.
+					역설적으로, 이것은 훨씬 더 뛰어난 앱을 제공하는 동시에, 예를 들어 프록시나 후크를 통한 것이 아니라 변수를 자연스럽게 사용하는 것과 같은 보다 관용적인 코드를 만들어낸다.
+					</aside>
+				</section>
+				<section>
+					<h2>No virtual dom</h2>
+				</section>
+				<section>
+					<h3>No virtual dom</h3>
+					<p>If you've used JavaScript frameworks in the last few years, you've probably heard the phrase 'the virtual DOM is fast', often said to mean that it's faster than the real DOM. It's a surprisingly resilient meme — for example people have asked how Svelte can be fast when it doesn't use a virtual DOM.</p>
+				</section>
+				<section>
+					<img data-src="res/rethinking-best-practices.jpg">
+					<div class="ref">Screenshot from  at JSConfEU 2013</div>
+				</section>
+				<section>
+					<p>Few minutes later...</p>
+					<p>React is not magic. Just like you can drop into assembler with C and beat the C compiler, you can drop into raw DOM operations and DOM API calls and beat React if you wanted to. However, using C or Java or JavaScript is an order of magnitude performance improvement because you don't have to worry...about the specifics of the platform. With React you can build applications without even thinking about performance and the default state is fast.</p>
+				</section>
+				<section>
+					<h3>Virtual DOM is slow?</h3>
+					<p>the virtual DOM is usually fast enough.</p>
+					<p>The original promise of React was that you could re-render your entire app on every single state change without worrying about performance.</p>
+					<p>there'd be no need for optimisations like shouldComponentUpdate (which is a way of telling React when it can safely skip a component).</p>
+				</section>
+				<section>
+					<h3>Virtual DOM is slow?</h3>
+					<p>Even with shouldComponentUpdate, updating your entire app's virtual DOM in one go is a lot of work. A while back, the React team introduced something called React Fiber which allows the update to be broken into smaller chunks. This means (among other things) that updates don't block the main thread for long periods of time, though it doesn't reduce the total amount of work or the time an update takes.</p>
+				</section>
+				<section>
+					<p>Where does the overhead come from?</p>
+				</section>
+				<section>
+					<p>Diffing isn't free</p>
+					<aside class="notes">
+						Most obviously, . You can't apply changes to the real DOM without first comparing the new virtual DOM with the previous snapshot. To take the earlier HelloMessage example, suppose the name prop changed from 'world' to 'everybody'.
+
+						Both snapshots contain a single element. In both cases it's a <div>, which means we can keep the same DOM node
+						We enumerate all the attributes on the old <div> and the new one to see if any need to be changed, added or removed. In both cases we have a single attribute — a className with a value of "greeting"
+						Descending into the element, we see that the text has changed, so we'll need to update the real DOM
+						Of these three steps, only the third has value in this case, since — as is the case in the vast majority of updates — the basic structure of the app is unchanged. It would be much more efficient if we could skip straight to step 3:
+						
+						if (changed.name) {
+							text.data = name;
+						}
+						(This is almost exactly the update code that Svelte generates. Unlike traditional UI frameworks, Svelte is a compiler that knows at build time how things could change in your app, rather than waiting to do the work at run time.)
+					</aside>
+				</section>
+				<section>
+					<h3>Unnecessary work</h3>
+					<pre>
+						<code class="hljs small">
+function MoreRealisticComponent(props) {
+  const [selected, setSelected] = useState(null);
+
+  return (
+    <div>
+      <p>Selected {selected ? selected.name : 'nothing'}</p>
+
+      <ul>
+        {props.items.map(item =>
+          <li>
+            <button onClick={() => setSelected(item)}>
+              {item.name}
+            </button>
+          </li>
+        )}
+      </ul>
+    </div>
+  );
+}
+						</code>
+					</pre>
+					<aside class="notes">
+						Here, we're generating a new array of virtual &lt;li&gt; elements
+							— each with their own inline event handler —
+						on every state change, regardless of whether props.items has changed.
+						Unless you're unhealthily obsessed with performance,
+						you're not going to optimise that. There's no point. It's plenty fast enough. But you know what would be even faster? Not doing that.
+						
+						The danger of defaulting to doing unnecessary work, even if that work is trivial, is that your app will eventually succumb to 'death by a thousand cuts' with no clear bottleneck to aim at once it's time to optimise.
+						
+						Svelte is explicitly designed to prevent you from ending up in that situation.
+					</aside>
+				</section>
+				<section>
+					<h3>Why do frameworks use the virtual DOM then?</h3>
+					<p>
+						It's important to understand that virtual DOM isn't a feature. It's a means to an end, the end being declarative, state-driven UI development. Virtual DOM is valuable because it allows you to build apps without thinking about state transitions, with performance that is generally good enough. That means less buggy code, and more time spent on creative tasks instead of tedious ones.
+
+						But it turns out that we can achieve a similar programming model without using virtual DOM — and that's where Svelte comes in.
+					</p>
+					<aside class="notes">
+						가상 DOM은 기능이 아니라는 것을 이해하는 것이 중요하다. 그것은 목적을 위한 수단이며, 목적은 선언적이고, 주 주도적인 UI 개발이다. 가상 DOM은 일반적으로 충분한 성능을 가지고 상태 전환에 대해 생각하지 않고 앱을 구축할 수 있기 때문에 가치가 있다. 이것은 버그 코드가 덜하고 지루한 작업 대신에 창의적인 작업에 더 많은 시간을 소비한다는 것을 의미한다.
+					</aside>
+				</section>
+				<section>
+					<h3>So, What is Svelte?</h3>
+				</section>
+				<section>
+					<p>Svelte is a component framework — like React or Vue</p>
+				</section>
+				<section>
+					<p>But,</p>
+					<p>there's an important difference</p>
+				</section>
+				<section>
+					<p>Traditional frameworks allow you to write declarative state-driven code</p>
+					<p>Penalty: the browser must do extra work to convert those declarative structures into DOM operations, using techniques like  that eat into your frame budget and tax the garbage collector.</p>
+				</section>
+				<section>
+					<p>Svelte runs at build time</p>
+				</section>
+				<section>
+					<p>converting your components into highly efficient imperative code that surgically updates the DOM. As a result, you're able to write ambitious applications with excellent performance characteristics.</p>
+				</section>
 			</div>
 		</div>
 
@@ -74,7 +411,9 @@
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
+				],
+				hash: true,
+				slideNumber: true,
 			});
 		</script>
 	</body>
