@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../src/App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n\tlet name = 'world';\n\tlet title = '';\n\tlet items = [];\n\tlet renderingTime  = 0;\n\n\tfunction handleChange() {\n\t\tconst a = []\n\t\tfor(let i=0; i<5000; i++) {\n\t\t\ta.push(title)\n\t\t}\n\t\titems = a\n\t}\n</script>\n<style>\n.App {\n  text-align: center;\n}\n.App-header {\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  font-size: calc(10px + 2vmin);\n  color: white;\n}\ninput {\n  font-size: 2rem;\n}\n</style>\n\n<div class=\"App-header\">\n\t<h1>Svelte</h1>\n\t<input type=\"text\" bind:value={title} on:change={handleChange}/>\n\t<div>{title}</div>\n\t<ul style=\"display:none;\">\n\t\t{#each items as item}\n\t\t\t<li>{item}</li>\n\t\t{/each}\n\t<!-- <ul style={{display:\"none\"}}> -->\n\t<!-- {this.state.items.map((item, k) =>\n\t\t<li key={k}>\n\t\t{item}\n\t\t</li>\n\t)} -->\n\t</ul>\n</div>"
+  ],
+  "names": [],
+  "mappings": "AAeA,IAAI,eAAC,CAAC,AACJ,UAAU,CAAE,MAAM,AACpB,CAAC,AACD,WAAW,eAAC,CAAC,AACX,UAAU,CAAE,KAAK,CACjB,OAAO,CAAE,IAAI,CACb,cAAc,CAAE,MAAM,CACtB,WAAW,CAAE,MAAM,CACnB,eAAe,CAAE,MAAM,CACvB,SAAS,CAAE,KAAK,IAAI,CAAC,CAAC,CAAC,KAAK,CAAC,CAC7B,KAAK,CAAE,KAAK,AACd,CAAC,AACD,KAAK,eAAC,CAAC,AACL,SAAS,CAAE,IAAI,AACjB,CAAC"
+}
