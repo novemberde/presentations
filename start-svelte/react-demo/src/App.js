@@ -7,14 +7,20 @@ class App extends React.Component{
     this.state = {
       title: "",
       items: [],
+      memory: 0,
     }
     this.handleChange = this.handleChange.bind(this)
+    setInterval(() => {
+      this.setState({
+        memory: Math.round(window.performance.memory.usedJSHeapSize/1000000),
+      })
+    }, 0.5)
   }
 
   handleChange(e) {
     let title = e.target.value
     let items = []
-    for(let i=0; i<10000; i++) {
+    for(let i=0; i<40000; i++) {
       items.push(title)
     }
     this.setState({
@@ -30,6 +36,7 @@ class App extends React.Component{
           <h1>React</h1>
           <input type="text" value={this.state.title} onChange={this.handleChange}/>
           <div>{this.state.title}</div>
+          <div className="memory">Memory usage: {this.state.memory}MB</div>
           <ul style={{display:"none"}}>
           {/* <ul> */}
             {this.state.items.map((item, k) =>

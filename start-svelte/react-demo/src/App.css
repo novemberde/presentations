@@ -14,3 +14,8 @@
 input {
   font-size: 2rem;
 }
+.memory {
+	padding-top: 1rem;
+  color: chocolate;
+  font-size: 2rem;
+}
