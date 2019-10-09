@@ -1,5 +1,5 @@
 .dg-logo {
-    width: 10%;
+    width: 100px;
 }
 .img {
     border: 0px !important;
@@ -24,4 +24,7 @@ iframe {
 .small {
     font-size: 0.8rem;
     line-height: 1.5rem;
+}
+h2,h3 {
+    color: chocolate !important;
 }
