@@ -1,13 +1,19 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+:root {
+  --progress-height: 40px;
+  --progress-width: 300px;
+  --progress-border-size: 15px;
+  --progress-outer-height: calc(
+    var(--progress-height) + var(--progress-border-size) * 2
+  );
+  --progress-outer-width: calc(
+    var(--progress-width) + var(--progress-border-size) * 2
+  );
+  }
+  
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }

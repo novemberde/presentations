@@ -3,13 +3,18 @@
 	let title = '';
 	let items = [];
 	let renderingTime  = 0;
-	let memory = 0;
+  let memory = 0;
+  let maximum = 0;
 	let containerEl;
 	const colorClasses = ['primary', 'secondary', 'tertiary', 'quaternary'];
 
 	setInterval(() => {
-		memory = window.performance.memory.usedJSHeapSize
-	}, 0.8)
+    
+    memory = Math.round(window.performance.memory.usedJSHeapSize/1000000)
+    if ( maximum < memory ) {
+      maximum = memory
+    }
+	}, 100)
 
 	function handleChange(e) {
 		const length = title ? title.length : 0
@@ -147,7 +152,8 @@
 <div class="progress"></div>
 <div class="my-input">
 	<input type="text" bind:value={title} on:keyup={handleChange}/>
-  <div class="memory">Memory Usage: {Math.round(memory/1000000)}MB</div>
+  <div class="memory">Memory Usage: {memory}MB</div>
+  <div class="memory">Maximum Usage: {maximum}MB</div>
   
 </div>
 {#each items as item}
