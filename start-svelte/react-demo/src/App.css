@@ -2,8 +2,8 @@
   position: fixed;
   overflow: hidden;
   float: left;
-  height: 100%;
-  width: 100%;
+  height: 150%;
+  width: 150%;
   margin: 0;
   padding: 0;
 }
@@ -28,6 +28,11 @@
 
 .dot.quaternary {
   background-color: #ffffff;
+}
+h1 {
+  position: fixed;
+  top: calc(50% - 100px);
+  left: calc(50% - 50px);
 }
 .my-input {
 	position: fixed;

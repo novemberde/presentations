@@ -20,7 +20,7 @@
 		const length = title ? title.length : 0
 		let array = []
 
-		const n = Math.min(Math.pow(length, 2), 100)
+		const n = Math.min(Math.pow(length, 2), 125)
 		const height = containerEl.clientHeight / n
 		const width = containerEl.clientWidth / n
 		const counts = n * n
@@ -63,6 +63,11 @@
 
 .dot.quaternary {
   background-color: #ffffff;
+}
+h1 {
+  position: fixed;
+  top: calc(50% - 100px);
+  left: calc(50% - 50px);
 }
 .my-input {
 	position: fixed;
@@ -150,6 +155,7 @@
 </style>
 <div class="container" bind:this={containerEl}></div>
 <div class="progress"></div>
+<h1>SVELTE</h1>
 <div class="my-input">
 	<input type="text" bind:value={title} on:keyup={handleChange}/>
   <div class="memory">Memory Usage: {memory}MB</div>

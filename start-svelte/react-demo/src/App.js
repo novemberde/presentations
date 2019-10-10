@@ -32,7 +32,7 @@ class App extends React.Component{
     let items = []
     const colorClasses = this.colorClasses
 
-		const n = Math.min(Math.pow(length, 2), 100)
+		const n = Math.min(Math.pow(length, 2), 125)
 		const height = container.clientHeight / n
     const width = container.clientWidth / n
 		const counts = n * n
@@ -50,6 +50,7 @@ class App extends React.Component{
   render() {
     return (
       <div className="container" ref={this.container}>
+        <h1>REACT</h1>
         <div className="progress"></div>
         <div className="my-input">
           <input type="text" value={this.state.title} onChange={this.handleChange}/>
