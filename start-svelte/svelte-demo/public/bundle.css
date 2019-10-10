@@ -1,3 +1,33 @@
-.App.svelte-nomd0u{text-align:center}.App-header.svelte-nomd0u{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:calc(10px + 2vmin);color:white}input.svelte-nomd0u{font-size:2rem}.memory.svelte-nomd0u{padding-top:1rem;color:chocolate;font-size:2rem}
+.container.svelte-1k8g2ys{position:fixed;overflow:hidden;float:left;height:150%;width:150%;margin:0;padding:0}.dot.svelte-1k8g2ys{height:25px;width:25px;background-color:gray;float:left}.dot.primary.svelte-1k8g2ys{background-color:#ff7c61}.dot.secondary.svelte-1k8g2ys{background-color:#1affb0}.dot.tertiary.svelte-1k8g2ys{background-color:#ffd336}.dot.quaternary.svelte-1k8g2ys{background-color:#ffffff}.my-input.svelte-1k8g2ys{position:fixed;height:40px;width:300px;top:50%;left:50%;transform:translate(-50%, -50%)}.my-input.svelte-1k8g2ys input.svelte-1k8g2ys{font-size:30px;height:100%;width:100%;box-sizing:border-box}.memory.svelte-1k8g2ys{font-size:30px;padding-top:20px;font-weight:bold}.progress.svelte-1k8g2ys{position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);height:calc(var(--progress-outer-height));width:calc(var(--progress-outer-width));background:linear-gradient(to right, #2196f3 99.99%, transparent),
+    linear-gradient(to bottom, #2196f3 99.99%, transparent),
+    linear-gradient(to right, #2196f3 99.99%, transparent),
+    linear-gradient(to bottom, #2196f3 99.99%, transparent);background-size:100% var(--progress-border-size),
+    var(--progress-border-size) 100%, 100% var(--progress-border-size),
+    var(--progress-border-size) 100%;background-repeat:no-repeat;animation:svelte-1k8g2ys-progress 3s linear infinite;background-position:calc(0px - var(--progress-outer-width)) 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size))
+    calc(0px - var(--progress-outer-height)),
+    var(--progress-outer-width)
+    calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px var(--progress-outer-height)}@keyframes svelte-1k8g2ys-progress{0%{background-position:calc(0px - var(--progress-outer-width)) 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size))
+      calc(0px - var(--progress-outer-height)),
+    var(--progress-outer-width)
+      calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px var(--progress-outer-height)}38%{background-position:0px 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size))
+      calc(0px - var(--progress-outer-height)),
+    var(--progress-outer-width)
+      calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px var(--progress-outer-height)}50%{background-position:0px 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size)) 0px,
+    var(--progress-outer-width)
+      calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px var(--progress-outer-height)}88%{background-position:0px 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size)) 0px,
+    0px calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px var(--progress-outer-height)}100%{background-position:0px 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size)) 0px,
+    0px calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px 0px}}
 
 /*# sourceMappingURL=bundle.css.map */

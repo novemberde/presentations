@@ -4,56 +4,152 @@
 	let items = [];
 	let renderingTime  = 0;
 	let memory = 0;
+	let containerEl;
+	const colorClasses = ['primary', 'secondary', 'tertiary', 'quaternary'];
 
 	setInterval(() => {
 		memory = window.performance.memory.usedJSHeapSize
-	}, 0.5)
+	}, 0.8)
 
-	function handleChange() {
-		const a = []
-		for(let i=0; i<40000; i++) {
-			a.push(title)
+	function handleChange(e) {
+		const length = title ? title.length : 0
+		let array = []
+
+		const n = Math.min(Math.pow(length, 2), 100)
+		const height = containerEl.clientHeight / n
+		const width = containerEl.clientWidth / n
+		const counts = n * n
+
+		for (let i = 0; i < counts; i++) {
+			const color = colorClasses[Math.floor(Math.random() * colorClasses.length)]
+			array.push({height, width, color})
 		}
-		items = a
+		items = array;
 	}
 </script>
 <style>
-.App {
-  text-align: center;
+.container {
+  position: fixed;
+  overflow: hidden;
+  float: left;
+  height: 150%;
+  width: 150%;
+  margin: 0;
+  padding: 0;
 }
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: gray;
+  float: left;
 }
-input {
-  font-size: 2rem;
+
+.dot.primary {
+  background-color: #ff7c61;
+}
+
+.dot.secondary {
+  background-color: #1affb0;
+}
+
+.dot.tertiary {
+  background-color: #ffd336;
+}
+
+.dot.quaternary {
+  background-color: #ffffff;
+}
+.my-input {
+	position: fixed;
+	height: 40px;
+	width: 300px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.my-input input {
+  font-size: 30px;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 .memory {
-	padding-top: 1rem;
-  color: chocolate;
-  font-size: 2rem;
+  font-size: 30px;
+  padding-top:20px;
+  font-weight: bold;
 }
-</style>
 
-<div class="App-header">
-	<h1>Svelte</h1>
-	<input type="text" bind:value={title} on:change={handleChange}/>
-	<div>{title}</div>
-	<div class="memory">Memory Usage: {Math.round(memory/1000000)}MB</div>
-	<ul style="display:none;">
-		{#each items as item}
-			<li>{item}</li>
-		{/each}
-	<!-- <ul style={{display:"none"}}> -->
-	<!-- {this.state.items.map((item, k) =>
-		<li key={k}>
-		{item}
-		</li>
-	)} -->
-	</ul>
+.progress {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: calc(var(--progress-outer-height));
+  width: calc(var(--progress-outer-width));
+  background: linear-gradient(to right, #2196f3 99.99%, transparent),
+    linear-gradient(to bottom, #2196f3 99.99%, transparent),
+    linear-gradient(to right, #2196f3 99.99%, transparent),
+    linear-gradient(to bottom, #2196f3 99.99%, transparent);
+  background-size: 100% var(--progress-border-size),
+    var(--progress-border-size) 100%, 100% var(--progress-border-size),
+    var(--progress-border-size) 100%;
+  background-repeat: no-repeat;
+  animation: progress 3s linear infinite;
+  background-position: calc(0px - var(--progress-outer-width)) 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size))
+    calc(0px - var(--progress-outer-height)),
+    var(--progress-outer-width)
+    calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px var(--progress-outer-height);
+}
+
+@keyframes progress {
+  0% {
+    background-position: calc(0px - var(--progress-outer-width)) 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size))
+      calc(0px - var(--progress-outer-height)),
+    var(--progress-outer-width)
+      calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px var(--progress-outer-height);
+  }
+  38% {
+    background-position: 0px 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size))
+      calc(0px - var(--progress-outer-height)),
+    var(--progress-outer-width)
+      calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px var(--progress-outer-height);
+  }
+  50% {
+    background-position: 0px 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size)) 0px,
+    var(--progress-outer-width)
+      calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px var(--progress-outer-height);
+  }
+  88% {
+    background-position: 0px 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size)) 0px,
+    0px calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px var(--progress-outer-height);
+  }
+  100% {
+    background-position: 0px 0px,
+    calc(var(--progress-outer-width) - var(--progress-border-size)) 0px,
+    0px calc(var(--progress-outer-height) - var(--progress-border-size)),
+    0px 0px;
+  }
+}
+
+</style>
+<div class="container" bind:this={containerEl}></div>
+<div class="progress"></div>
+<div class="my-input">
+	<input type="text" bind:value={title} on:keyup={handleChange}/>
+  <div class="memory">Memory Usage: {Math.round(memory/1000000)}MB</div>
+  
 </div>
+{#each items as item}
+	<div style="height: {item.height}px; width: {item.width}px;" class="dot {item.color}"></div>
+{/each}
