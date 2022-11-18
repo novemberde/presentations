@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "if-env": "^1.0.0",
-    "preact-cli": "^2.0.0"
+    "preact-cli": "^3.4.1"
   },
   "dependencies": {
     "preact": "^8.5.2",
